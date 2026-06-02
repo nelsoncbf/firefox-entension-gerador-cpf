@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Gerador de CPF para Testes",
+  "version": "1.0.0",
+  "description": "Gera CPFs válidos matematicamente para fins de teste. Não representa dados de pessoas reais.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": { "48": "icons/icon-48.png" },
+    "default_title": "Gerador de CPF para Testes"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "gerador-cpf@nelsoncbf",
+      "strict_min_version": "57.0",
+      "update_url": "https://raw.githubusercontent.com/nelsoncbf/firefox-entension-gerador-cpf/main/updates.json"
+    }
+  },
+  "homepage_url": "https://github.com/nelsoncbf/firefox-entension-gerador-cpf",
+  "author": "nelsoncbf",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "clipboardWrite"
+  ]
+}

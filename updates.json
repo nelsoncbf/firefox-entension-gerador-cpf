@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "gerador-cpf@nelsoncbf": {
+      "updates": [
+        {
+          "version": "1.0.0",
+          "update_link": "https://github.com/nelsoncbf/firefox-entension-gerador-cpf/releases/download/v1.0.0/gerador-cpf.xpi"
+        }
+      ]
+    }
+  }
+}

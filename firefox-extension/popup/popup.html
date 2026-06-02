@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de CPF</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <img src="../icons/icon-48.png" alt="" class="logo">
+        <span class="app-title">Gerador de CPF</span>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="gerador" id="tab-gerador">Gerar</button>
+        <button class="tab" data-tab="historico" id="tab-historico">
+          Histórico
+          <span class="badge-count" id="hist-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===== ABA GERADOR ===== -->
+    <div class="tab-content active" id="tab-gerador-content">
+
+      <div class="cpf-display-area">
+        <div class="cpf-label">CPF gerado</div>
+        <div class="cpf-value" id="cpf-display">—</div>
+      </div>
+
+      <button class="btn-generate" id="btn-gerar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+        Gerar novo CPF
+      </button>
+
+      <div class="copy-row" id="copy-row" style="display:none">
+        <button class="btn-copy" id="btn-copy-mask">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Com pontuação
+        </button>
+        <button class="btn-copy secondary" id="btn-copy-raw">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Sem pontuação
+        </button>
+
+      </div>
+
+      <div class="disclaimer">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Apenas para fins de teste.</strong> Os CPFs gerados são matematicamente válidos mas <strong>não pertencem a nenhuma pessoa real</strong>. O uso destes dados para qualquer finalidade ilegal ou fraudulenta é de inteira responsabilidade do usuário. Esta ferramenta não se responsabiliza por uso indevido.</span>
+      </div>
+    </div>
+
+    <!-- ===== ABA HISTÓRICO ===== -->
+    <div class="tab-content" id="tab-historico-content">
+
+      <div class="hist-toolbar">
+        <div class="add-cpf-row">
+          <input type="text" id="input-cpf-manual" placeholder="Adicionar CPF manualmente..." maxlength="14">
+          <button class="btn-add-manual" id="btn-add-manual" title="Adicionar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+        <div id="input-error" class="input-error" style="display:none"></div>
+      </div>
+
+      <div id="hist-empty" class="hist-empty">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <p>Nenhum CPF no histórico</p>
+        <p class="sub">Gere um CPF e salve, ou adicione manualmente.</p>
+      </div>
+
+      <div id="hist-list" class="hist-list"></div>
+
+      <div id="hist-footer" class="hist-footer" style="display:none">
+        <button class="btn-clear-all" id="btn-clear-all">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          Limpar histórico
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="author-footer">
+    <span>Desenvolvido por <a href="https://github.com/nelsoncbf" target="_blank">@nelsoncbf</a></span>
+    <a href="https://buymeacoffee.com/nlsf" target="_blank" class="bmc-btn" title="Buy me a coffee">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.5 3H6c-1.1 0-2 .9-2 2v5.71c0 3.83 2.95 7.18 6.78 7.29 3.96.1 7.22-3.06 7.22-7V5c0-1.1-.9-2-2-2zm-4.5 8l-1 3H11l-1-3V7h4v4zm6.5-5h-2v4h2c1.1 0 2-.9 2-2s-.9-2-2-2zM4 19h16v2H4v-2z"/></svg>
+      Buy me a coffee
+    </a>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

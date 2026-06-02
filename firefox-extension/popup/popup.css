@@ -1,0 +1,407 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 360px;
+  min-height: 420px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f4f6fb;
+  color: #1a1d2e;
+  font-size: 13px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+
+/* ---- HEADER ---- */
+header {
+  background: #fff;
+  border-bottom: 1.5px solid #e8eaf0;
+  padding: 12px 14px 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.logo { width: 22px; height: 22px; }
+
+.app-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b47c9;
+  letter-spacing: -0.2px;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.tab {
+  padding: 7px 16px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.15s;
+}
+
+.tab:hover { color: #3b47c9; }
+
+.tab.active {
+  color: #3b47c9;
+  border-bottom-color: #3b47c9;
+}
+
+.badge-count {
+  background: #3b47c9;
+  color: #fff;
+  border-radius: 99px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.badge-count:empty, .badge-count[data-count="0"] { display: none; }
+
+/* ---- TAB CONTENT ---- */
+.tab-content { display: none; padding: 16px 14px; flex: 1; }
+.tab-content.active { display: flex; flex-direction: column; gap: 12px; }
+
+/* ---- CPF DISPLAY ---- */
+.cpf-display-area {
+  background: #fff;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+
+.cpf-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.cpf-value {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1a1d2e;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  min-height: 36px;
+  line-height: 1.3;
+}
+
+.cpf-value.empty { color: #d1d5db; }
+
+/* ---- GENERATE BUTTON ---- */
+.btn-generate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px;
+  background: #3b47c9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-generate:hover { background: #2f3ba8; }
+.btn-generate:active { transform: scale(0.98); }
+
+/* ---- COPY ROW ---- */
+.copy-row {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-copy {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #3b47c9;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-copy:hover { background: #2f3ba8; }
+.btn-copy.secondary { background: #fff; color: #3b47c9; border: 1.5px solid #c7ccf5; }
+.btn-copy.secondary:hover { background: #eef0fc; }
+.btn-copy.copied { background: #15803d !important; color: #fff !important; border-color: transparent !important; }
+
+.btn-pin-add {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.btn-pin-add:hover { background: #eef0fc; color: #3b47c9; border-color: #c7ccf5; }
+
+/* ---- DISCLAIMER ---- */
+.disclaimer {
+  background: #fff;
+  border: 1.5px solid #fde68a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: #78350f;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.disclaimer svg { margin-top: 1px; flex-shrink: 0; color: #d97706; }
+
+/* ---- HISTORICO TOOLBAR ---- */
+.hist-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.add-cpf-row {
+  display: flex;
+  gap: 6px;
+}
+
+.add-cpf-row input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 7px;
+  font-size: 12px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: #1a1d2e;
+  background: #fff;
+  transition: border-color 0.15s;
+  letter-spacing: 0.5px;
+}
+
+.add-cpf-row input:focus {
+  outline: none;
+  border-color: #3b47c9;
+}
+
+.add-cpf-row input.error { border-color: #ef4444; }
+
+.btn-add-manual {
+  width: 36px;
+  height: 36px;
+  background: #3b47c9;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.btn-add-manual:hover { background: #2f3ba8; }
+
+.input-error {
+  font-size: 11px;
+  color: #ef4444;
+  padding-left: 2px;
+}
+
+/* ---- EMPTY STATE ---- */
+.hist-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 0;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.hist-empty p { font-size: 13px; }
+.hist-empty .sub { font-size: 11px; color: #c4c9d4; }
+
+/* ---- HIST LIST ---- */
+.hist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.hist-list::-webkit-scrollbar { width: 4px; }
+.hist-list::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+
+.hist-item {
+  background: #fff;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 8px;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.15s;
+}
+
+.hist-item:hover { border-color: #c7ccf5; }
+
+.hist-item.pinned {
+  border-color: #c7ccf5;
+  background: #f5f6fe;
+}
+
+.hist-item.pinned::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 28px;
+  background: #3b47c9;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.hist-cpf {
+  flex: 1;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #1a1d2e;
+  min-width: 0;
+}
+
+.hist-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.hist-btn {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.hist-btn:hover { background: #eef0fc; color: #3b47c9; border-color: #c7ccf5; }
+
+.hist-btn.pin-active { color: #3b47c9; border-color: #c7ccf5; background: #eef0fc; }
+
+.hist-btn.del:hover { background: #fef2f2; color: #ef4444; border-color: #fecaca; }
+
+.hist-btn.copied { color: #15803d; border-color: #bbf7d0; background: #f0fdf4; }
+
+/* ---- FOOTER ---- */
+.hist-footer {
+  padding-top: 8px;
+  border-top: 1px solid #e8eaf0;
+  margin-top: auto;
+}
+
+.btn-clear-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 4px 0;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.btn-clear-all:hover { opacity: 1; }
+
+/* ---- AUTHOR FOOTER ---- */
+.author-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #9ca3af;
+  border-top: 1px solid #e8eaf0;
+  background: #fff;
+  gap: 8px;
+}
+
+.author-footer a {
+  color: #3b47c9;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.author-footer a:hover { text-decoration: underline; }
+
+.bmc-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #FFDD00;
+  color: #000 !important;
+  font-weight: 600 !important;
+  font-size: 11px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.bmc-btn:hover { background: #f0d000; transform: scale(1.03); }
