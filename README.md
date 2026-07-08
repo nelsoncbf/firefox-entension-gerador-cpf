@@ -36,17 +36,17 @@ Extensão para Firefox que gera CPFs válidos matematicamente para uso em testes
 ## 🖥️ Interface
 
 ```
-┌─────────────────────────────┐
-│ 🔵 Gerador de CPF  [Gerar] [Histórico 3] │
-├─────────────────────────────┤
-│                             │
-│   CPF gerado                │
-│   123.456.789-09            │
-│                             │
-│  [Com pontuação] [Sem pontuação]         │
-│                             │
+┌─────────────────────────────────────────┐
+│ 🔵 Gerador de CPF [Gerar] [Histórico 3] │
+├─────────────────────────────────────────┤
+│                                         │
+│   CPF gerado                            │
+│   123.456.789-09                        │
+│                                         │
+│  [Com pontuação] [Sem pontuação]        │
+│                                         │
 │  ⚠️ Apenas para fins de teste...        │
-└─────────────────────────────┘
+└─────────────────────────────────────────┘
 ```
 
 ## 🚀 Instalação
